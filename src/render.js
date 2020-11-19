@@ -53,9 +53,16 @@ async function selectSource(source) {
 
     videoSelectBtn.innerText = source.name;
 
+   
+
     const constraints = {
-        audio: false,
-        video: {
+            audio:  { 
+                mandatory: {
+                    chromeMediaSource: 'desktop',
+                    chromeMediaSourceId: source.id
+                  }
+                },
+        video:{
             mandatory: {
                 chromeMediaSource: 'desktop',
                 chromeMediaSourceId: source.id
@@ -104,5 +111,4 @@ async function handleStop(e) {
     if (filePath) {
         writeFile(filePath, buffer, () => console.log('video saved successfully!'));
     }
-
 }
